@@ -1,0 +1,16 @@
+C:\Users\buzz\source\repos\projekt\projekt\bin\Debug\projekt.exe.config
+C:\Users\buzz\source\repos\projekt\projekt\bin\Debug\projekt.exe
+C:\Users\buzz\source\repos\projekt\projekt\bin\Debug\projekt.pdb
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.csproj.AssemblyReference.cache
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.csproj.SuggestedBindingRedirects.cache
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\MainWindow.g.cs
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\App.g.cs
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt_MarkupCompile.cache
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt_MarkupCompile.lref
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\MainWindow.baml
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.g.resources
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.Properties.Resources.resources
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.csproj.GenerateResource.cache
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.csproj.CoreCompileInputs.cache
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.exe
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.pdb
