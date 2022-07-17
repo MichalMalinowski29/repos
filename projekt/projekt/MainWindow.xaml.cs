@@ -155,14 +155,6 @@ namespace projekt
             {
                 System.Environment.Exit(1);
             }
-
-            for (int i = 0; i < pom; i++)
-            {
-                for (int j = 0; j < pom; j++)
-                {
-                    MessageBox.Show(data[i, j].ToString());
-                }
-            }
         }
 
         public void setVisible()
@@ -178,6 +170,7 @@ namespace projekt
             rowCount.Visibility = Visibility.Visible;
             columnCount.Visibility = Visibility.Visible;
             pathSF.Visibility = Visibility.Visible;
+            showMatriceButton.Visibility = Visibility.Visible;
         }
 
         private void createMatriceFromValues(object sender, RoutedEventArgs e)
@@ -211,14 +204,11 @@ namespace projekt
             {
                 System.Environment.Exit(1);
             }
+        }
 
-            for (int i = 0; i < pom; i++)
-            {
-                for (int j = 0; j < pom; j++)
-                {
-                    MessageBox.Show(data[i, j].ToString());
-                }
-            }
+        private void showMatrice(object sender, RoutedEventArgs e)
+        {
+             MessageBox.Show(msg);
         }
     }
 }
