@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace zad2
 {
@@ -11,7 +7,7 @@ namespace zad2
 
         class FizzBuzz
         {
-            public void func1()
+            public void WriteFizzBuzzSequence()
             {
                 for (int i = 1; i <= 100; i++)
                 {
@@ -25,7 +21,6 @@ namespace zad2
                         {
                             Console.WriteLine("Fizz");
                         }
-                        
                     }
                     else if (i % 5 == 0)
                     {
@@ -36,7 +31,6 @@ namespace zad2
                     {
                         Console.WriteLine(i);
                     }
-                    
                 }
             }
         }
@@ -44,7 +38,7 @@ namespace zad2
         static void Main(string[] args)
         {
             FizzBuzz zad2 = new FizzBuzz();
-            zad2.func1();
+            zad2.WriteFizzBuzzSequence();
         }
     }
 }
