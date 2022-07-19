@@ -6,3 +6,11 @@ C:\Users\buzz\source\repos\ConsoleApp3\ConsoleApp3\obj\Debug\zad4.csproj.Suggest
 C:\Users\buzz\source\repos\ConsoleApp3\ConsoleApp3\obj\Debug\zad4.csproj.CoreCompileInputs.cache
 C:\Users\buzz\source\repos\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.exe
 C:\Users\buzz\source\repos\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.pdb
+C:\Users\buzz\source\repos\zad4\ConsoleApp3\obj\Debug\zad4.csproj.AssemblyReference.cache
+C:\Users\buzz\source\repos\zad4\ConsoleApp3\obj\Debug\zad4.csproj.SuggestedBindingRedirects.cache
+C:\Users\buzz\source\repos\zad4\ConsoleApp3\obj\Debug\zad4.csproj.CoreCompileInputs.cache
+C:\Users\buzz\source\repos\zad4\ConsoleApp3\obj\Debug\ConsoleApp3.exe
+C:\Users\buzz\source\repos\zad4\ConsoleApp3\obj\Debug\ConsoleApp3.pdb
+C:\Users\buzz\source\repos\zad4\ConsoleApp3\bin\Debug\ConsoleApp3.exe.config
+C:\Users\buzz\source\repos\zad4\ConsoleApp3\bin\Debug\ConsoleApp3.exe
+C:\Users\buzz\source\repos\zad4\ConsoleApp3\bin\Debug\ConsoleApp3.pdb

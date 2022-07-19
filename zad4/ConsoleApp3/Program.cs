@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Text;
 
 namespace ConsoleApp3
 {
     internal class Program
     {
-        class Fib
+        class Fibonacci
         {
-
-            public void obl()
+            public void CalculateFibonacci()
             {
                 int x = 0;
                 int y = 1;
@@ -21,15 +17,15 @@ namespace ConsoleApp3
                 Console.WriteLine("Jeżeli chcesz odczytać z konsoli wpisz: 1");
                 Console.WriteLine("Jeżeli chcesz odczytać z pliku wpisz: 2");
 
-                string a = Console.ReadLine();
+                string UserInputMode = Console.ReadLine();
 
-                if(a == "1")
+                if(UserInputMode == "1")
                 {
                     Console.WriteLine("Podaj ilość wykonania obliczeń: ");
-                    string pom = Console.ReadLine(); 
+                    string NumberOfCalculations = Console.ReadLine(); 
                     Console.WriteLine("0 znak ciągu to: 0");
                     Console.WriteLine("1 znak ciągu to: 1");
-                    for (int i = 2; i <= Int32.Parse(pom); i++)
+                    for (int i = 2; i <= Int32.Parse(NumberOfCalculations); i++)
                     {
                         Console.WriteLine(i.ToString() + " znak ciągu to: " + (x + y).ToString());
                         z = x;
@@ -38,19 +34,34 @@ namespace ConsoleApp3
 
                     }
                 }
-                else if (a == "2")
+                else if (UserInputMode == "2")
                 {
                     Console.WriteLine("Dane proszę umieścić w pliku plik.txt znajdującym się w folderze Debug");
-                    string pom = File.ReadAllText(@"C:\Users\buzz\source\repos\ConsoleApp3\ConsoleApp3\bin\Debug\plik.txt", Encoding.UTF8);
-                    Console.WriteLine("0 znak ciągu to: 0");
-                    Console.WriteLine("1 znak ciągu to: 1");
-                    for (int i = 2; i <= Int32.Parse(pom); i++)
+                    try
                     {
-                        Console.WriteLine(i.ToString() + " znak ciągu to: " + (x + y).ToString());
-                        z = x;
-                        x = y;
-                        y = z + y;
+                        string TextFromFile = File.ReadAllText(@"C:\Users\buzz\source\repos\zad4\ConsoleApp3\bin\Debug\plik.txt", Encoding.UTF8);
+                        Console.WriteLine("0 znak ciągu to: 0");
+                        Console.WriteLine("1 znak ciągu to: 1");
+                        try
+                        {
+                            for (int i = 2; i <= Int32.Parse(TextFromFile); i++)
+                            {
+                                Console.WriteLine(i.ToString() + " znak ciągu to: " + (x + y).ToString());
+                                z = x;
+                                x = y;
+                                y = z + y;
 
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("W pliku powinna znajdować się liczba całkowita");
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Wystąpił błąd. Jeżeli plik.txt nie nie istnieje proszę go utworzyć w folderze Debug");
+                        Environment.Exit(0);
                     }
                 }
                 else
@@ -58,16 +69,12 @@ namespace ConsoleApp3
                     Console.WriteLine("Podano zły znak ");
                     Environment.Exit(0);
                 }
-
-
-
             }
         }
         static void Main(string[] args)
         {
-            Fib zad4 = new Fib();
-            zad4.obl();
-
+            Fibonacci zad4 = new Fibonacci();
+            zad4.CalculateFibonacci();
         }
     }
 }
