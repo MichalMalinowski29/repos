@@ -14,3 +14,4 @@ C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.csproj.GenerateReso
 C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.csproj.CoreCompileInputs.cache
 C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.exe
 C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.pdb
+C:\Users\buzz\source\repos\projekt\projekt\obj\Debug\projekt.csproj.ResolveComReference.cache

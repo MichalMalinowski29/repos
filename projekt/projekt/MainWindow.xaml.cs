@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 namespace projekt
 {
@@ -14,33 +14,32 @@ namespace projekt
     {
 
         static public int[,] data;
-        public string msg;
+        public string message;
         public int pom;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GenerateMatrix(object sender, RoutedEventArgs e)
         {
-            int pom = Int32.Parse(side.Text);
+            int MatrixSide = Int32.Parse(side.Text);
 
-            if (pom <= 10 && pom > 0)
+            if (MatrixSide <= 10 && MatrixSide > 0)
             {
-                msg = "";
+                message = "";
+                data = new int[MatrixSide, MatrixSide];
 
-                data = new int[pom, pom];
-
-                for (int i = 0; i < pom; i++)
+                for (int i = 0; i < MatrixSide; i++)
                 {
-                    for (int j = 0; j < pom; j++)
+                    for (int j = 0; j < MatrixSide; j++)
                     {
                         data[i, j] = j + i;
-                        msg += (j + i).ToString() + " ";
+                        message += (j + i).ToString() + " ";
                     }
-                    msg += "\n";
+                    message += "\n";
                 }
-                setVisible();
+                SetVisible();
             }
             else
             {
@@ -48,7 +47,7 @@ namespace projekt
             }
         }
 
-        private void Count_row(object sender, RoutedEventArgs e)
+        private void CountRow(object sender, RoutedEventArgs e)
         {
             int a = 0;
             int countColumn = Int32.Parse(rowCount.Text);
@@ -59,7 +58,7 @@ namespace projekt
             MessageBox.Show("Suma pól w podanym wierszu wynosi: " + a.ToString());
         }
 
-        private void Count_column(object sender, RoutedEventArgs e)
+        private void CountColumn(object sender, RoutedEventArgs e)
         {
             int a = 0;
             int countColumn = Int32.Parse(columnCount.Text);
@@ -70,7 +69,7 @@ namespace projekt
             MessageBox.Show("Suma pól w kolumnie wynosi: " + a.ToString());
         }
 
-        private void count_diagonal(object sender, RoutedEventArgs e)
+        private void CountDiagonal(object sender, RoutedEventArgs e)
         {
             int a = 0;
             for (int i = 0; i < Int32.Parse(side.Text); i++)
@@ -80,7 +79,7 @@ namespace projekt
             MessageBox.Show("Suma przekątnej: " + a.ToString());
         }
 
-        private void chooseFile(object sender, RoutedEventArgs e)
+        private void ChooseFileToSave (object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
@@ -94,111 +93,111 @@ namespace projekt
             }
         }
 
-        private void saveToFile(object sender, RoutedEventArgs e)
+        private void SaveToFile(object sender, RoutedEventArgs e)
         {
             string pathSaveTo = pathSF.Text;
-            File.WriteAllText(pathSaveTo, msg);
+            File.WriteAllText(pathSaveTo, message);
         }
 
-        private void chooseFile2(object sender, RoutedEventArgs e)
+        private void ChooseFileToRead (object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
-            dlg.DefaultExt = ".txt";
-            dlg.Filter = "Text files (*.txt)|*.txt";
-            Nullable<bool> result = dlg.ShowDialog();
+            Microsoft.Win32.OpenFileDialog FormDialog = new Microsoft.Win32.OpenFileDialog();
+            FormDialog.DefaultExt = ".txt";
+            FormDialog.Filter = "Text files (*.txt)|*.txt";
+            Nullable<bool> result = FormDialog.ShowDialog();
             if (result == true)
             {
-                string filename = dlg.FileName;
+                string filename = FormDialog.FileName;
                 pathSF2.Text = filename;
             }
         }
 
-        private void setMatrice(object sender, RoutedEventArgs e)
+        private void SetMatrix(object sender, RoutedEventArgs e)
         {
             var path = pathSF2.Text;
-            string content = Regex.Replace(File.ReadAllText(path, Encoding.UTF8), @"\s", "");
-            int pom = Int32.Parse(side.Text);
-            int pom2 = 0;
+            string FileWithoutNewlines = File.ReadAllText(path, Encoding.UTF8).Replace(Environment.NewLine, " ");
+            string[] content = FileWithoutNewlines.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            int MatrixSide = Int32.Parse(side.Text);
+            int IterationCount = 0;
 
-            if (pom <= 10 && pom > 0)
+            if (MatrixSide <= 10 && MatrixSide > 0)
             {
-                msg = "";
+                message = "";
+                data = new int[MatrixSide, MatrixSide];
 
-                data = new int[pom, pom];
-
-                for (int i = 0; i < pom; i++)
+                for (int i = 0; i < MatrixSide; i++)
                 {
-                    for (int j = 0; j < pom; j++)
+                    for (int j = 0; j < MatrixSide; j++)
                     {
-                        data[i, j] = Int32.Parse(content.ElementAt(pom2).ToString());
-                        msg += content.ElementAt(pom2).ToString() + " ";
-                        pom2++;
+                        data[i, j] = Int32.Parse(content[IterationCount]);
+                        message += content[IterationCount] + " ";
+                        IterationCount++;
                     }
-                    msg += "\n";
+                    message += "\n";
                 }
-
-                setVisible();
-
+                SetVisible();
             }
             else
             {
-                System.Environment.Exit(1);
+                Environment.Exit(1);
             }
         }
 
-        public void setVisible()
+        public void SetVisible()
         {
-            a1.Visibility = Visibility.Visible;
-            a2.Visibility = Visibility.Visible;
-            a3.Visibility = Visibility.Visible;
-            a4.Visibility = Visibility.Visible;
-            a5.Visibility = Visibility.Visible;
-            a6.Visibility = Visibility.Visible;
-            a7.Visibility = Visibility.Visible;
-            a8.Visibility = Visibility.Visible;
+            RowCountLabel.Visibility = Visibility.Visible;
+            ColumnCountLabel.Visibility = Visibility.Visible;
+            CountDiagonalButton.Visibility = Visibility.Visible;
+            CountRowButton.Visibility = Visibility.Visible;
+            CountColumnButton.Visibility = Visibility.Visible;
+            SaveToFileLabel.Visibility = Visibility.Visible;
+            SaveToFileButton.Visibility = Visibility.Visible;
+            SaveToFileSubmitButton.Visibility = Visibility.Visible;
             rowCount.Visibility = Visibility.Visible;
             columnCount.Visibility = Visibility.Visible;
             pathSF.Visibility = Visibility.Visible;
-            showMatriceButton.Visibility = Visibility.Visible;
+            ShowMatrixButton.Visibility = Visibility.Visible;   
         }
 
-        private void createMatriceFromValues(object sender, RoutedEventArgs e)
+        private void CreateMatrixFromValues(object sender, RoutedEventArgs e)
         {
-            var path = matriceValues.Text;
-            string content = Regex.Replace(path, @"\s", "");
-            int pom = Int32.Parse(side.Text);
-            int pom2 = 0;
+            int MatrixSide = Int32.Parse(side.Text);
 
-            if (pom <= 10 && pom > 0)
+            if (MatrixSide <= 10 && MatrixSide > 0)
             {
-                msg = "";
+                message = "";
+                data = new int[MatrixSide, MatrixSide];
 
-                data = new int[pom, pom];
-
-                for (int i = 0; i < pom; i++)
+                for (int i = 0; i < MatrixSide; i++)
                 {
-                    for (int j = 0; j < pom; j++)
+                    for (int j = 0; j < MatrixSide; j++)
                     {
-                        data[i, j] = Int32.Parse(content.ElementAt(pom2).ToString());
-                        msg += content.ElementAt(pom2).ToString() + " ";
-                        pom2++;
+                        string InputMessage = $"Podaj kolejną wartość którą chcesz dodać do macierzy. Podana wartość znajdzie się na indeksie: {i}, {j}";
+                        string input = Microsoft.VisualBasic.Interaction.InputBox(InputMessage, "Title", "");
+
+                        data[i, j] = Int32.Parse(input);
+                        message += input + " ";
                     }
-                    msg += "\n";
+                    message += "\n";
                 }
-
-                setVisible();
-
+                SetVisible();
             }
             else
             {
-                System.Environment.Exit(1);
+                Environment.Exit(1);
             }
         }
 
-        private void showMatrice(object sender, RoutedEventArgs e)
+        private void ShowMatrix(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(msg);
+            MessageBox.Show(message);
         }
-    }
+
+        
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+            {
+                Regex regex = new Regex("[^0-9]+");
+                e.Handled = regex.IsMatch(e.Text);
+            }
+        }
 }

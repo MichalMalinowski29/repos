@@ -7,30 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="side" HorizontalAlignment="Left" Margin="18,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="18,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Podaj bok macierz"/><Run Language="pl-pl" Text="y"/></TextBlock>
-        <Button Content="Stwórz macierz o boku powyżej" HorizontalAlignment="Left" Margin="330,197,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="side" HorizontalAlignment="Left" Margin="18,31,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBlock HorizontalAlignment="Left" Margin="18,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Podaj bok macierz"/><Run Language="pl-pl" Text="y"/></TextBlock>
+        <Button Content="Stwórz macierz o boku powyżej" HorizontalAlignment="Left" Margin="400,197,0,0" VerticalAlignment="Top" Click="GenerateMatrix"/>
 
-        <Button x:Name="a3" Visibility="Hidden" Content="Oblicz przekątną" HorizontalAlignment="Left" Margin="23,346,0,0" VerticalAlignment="Top" Click="count_diagonal"/>
-        <Button x:Name="a4" Visibility="Hidden" Content="Oblicz" HorizontalAlignment="Left" Margin="182,58,0,0" VerticalAlignment="Top" Click="Count_row"/>
-        <Button x:Name="a5" Visibility="Hidden" Content="Oblicz" HorizontalAlignment="Left" Margin="444,58,0,0" VerticalAlignment="Top" Click="Count_column"/>
+        <Button x:Name="CountDiagonalButton" Visibility="Hidden" Content="Oblicz przekątną" HorizontalAlignment="Left" Margin="23,346,0,0" VerticalAlignment="Top" Click="CountDiagonal"/>
+        <Button x:Name="CountRowButton" Visibility="Hidden" Content="Oblicz" HorizontalAlignment="Left" Margin="182,58,0,0" VerticalAlignment="Top" Click="CountRow"/>
+        <Button x:Name="CountColumnButton" Visibility="Hidden" Content="Oblicz" HorizontalAlignment="Left" Margin="444,58,0,0" VerticalAlignment="Top" Click="CountColumn"/>
 
-        <TextBox x:Name="rowCount" Visibility="Hidden"  HorizontalAlignment="Left" Margin="183,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="columnCount" Visibility="Hidden" HorizontalAlignment="Left" Margin="444,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="rowCount" Visibility="Hidden"  HorizontalAlignment="Left" Margin="183,31,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="columnCount" Visibility="Hidden" HorizontalAlignment="Left" Margin="444,31,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
 
-        <TextBlock x:Name="a1" Visibility="Hidden" HorizontalAlignment="Left" Margin="182,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Language="pl-pl" Text="Wpisz indeks wiersza który chcesz policzyć"/></TextBlock>
+        <TextBlock x:Name="RowCountLabel" Visibility="Hidden" HorizontalAlignment="Left" Margin="182,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Language="pl-pl" Text="Wpisz indeks wiersza który chcesz policzyć"/></TextBlock>
+        <TextBlock x:Name="ColumnCountLabel" Visibility="Hidden" HorizontalAlignment="Left" Margin="444,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Wpisz indeks "/><Run Text="kolumny"/><Run Text=" któr"/><Run Text="ą"/><Run Text=" chcesz policzyć"/></TextBlock>
 
-        <TextBlock x:Name="a2" Visibility="Hidden" HorizontalAlignment="Left" Margin="444,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Wpisz indeks "/><Run Text="kolumny"/><Run Text=" któr"/><Run Text="ą"/><Run Text=" chcesz policzyć"/></TextBlock>
-        <TextBlock x:Name="a6" Visibility="Hidden" HorizontalAlignment="Left" Margin="640,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Zapisz macież do pliku"/><Run Language="pl-pl"/></TextBlock>
-        <Button x:Name="a7" Visibility="Hidden" Content="Wybierz plik" HorizontalAlignment="Left" Margin="640,351,0,0" VerticalAlignment="Top" Click="chooseFile"/>
-        <Button x:Name="a8" Visibility="Hidden" Content="Zapisz" HorizontalAlignment="Left" Margin="728,351,0,0" VerticalAlignment="Top" Click="saveToFile"/>
-        <TextBox x:Name="pathSF" Visibility="Hidden" HorizontalAlignment="Left" Margin="640,318,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox Visibility="Hidden" x:Name="pathSF2" HorizontalAlignment="Left" Margin="18,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Wybierz macierz z pliku (Podaj pierwszo bok wyżej)" HorizontalAlignment="Left" Margin="18,274,0,0" VerticalAlignment="Top" Click="chooseFile2"/>
-        <Button Content="Ustaw macierz na podstawie pliku" HorizontalAlignment="Left" Margin="330,274,0,0" VerticalAlignment="Top" Click="setMatrice"/>
+        <TextBlock x:Name="SaveToFileLabel" Visibility="Hidden" HorizontalAlignment="Left" Margin="640,289,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Zapisz macież do pliku"/><Run Language="pl-pl"/></TextBlock>
+        <Button x:Name="SaveToFileButton" Visibility="Hidden" Content="Wybierz plik" HorizontalAlignment="Left" Margin="640,351,0,0" VerticalAlignment="Top" Click="ChooseFileToSave"/>
+        <Button x:Name="SaveToFileSubmitButton" Visibility="Hidden" Content="Zapisz" HorizontalAlignment="Left" Margin="728,351,0,0" VerticalAlignment="Top" Click="SaveToFile"/>
+        <TextBox x:Name="pathSF" Visibility="Hidden" HorizontalAlignment="Left" Margin="640,318,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
 
-        <TextBox x:Name="matriceValues" HorizontalAlignment="Left" Margin="18,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="110"/>
-        <Button Content="Stwórz macierz o boku podanym i wartościach wyżej" HorizontalAlignment="Left" Margin="18,197,0,0" VerticalAlignment="Top" Click="createMatriceFromValues"/>
+        <TextBox Visibility="Hidden" x:Name="pathSF2" HorizontalAlignment="Left" Margin="18,134,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Wybierz macierz z pliku (Podaj pierwszo bok wyżej)" HorizontalAlignment="Left" Margin="18,274,0,0" VerticalAlignment="Top" Click="ChooseFileToRead"/>
+        <Button Content="Ustaw macierz na podstawie pliku" HorizontalAlignment="Left" Margin="330,274,0,0" VerticalAlignment="Top" Click="SetMatrix"/>
+
+        <Button Content="Stwórz macierz o boku podanym i wartościach które teraz podaż" HorizontalAlignment="Left" Margin="18,197,0,0" VerticalAlignment="Top" Click="CreateMatrixFromValues"/>
+        <Button x:Name="ShowMatrixButton" Content="Wyświetl macierz" Visibility="Hidden" HorizontalAlignment="Left" Margin="605,197,0,0" VerticalAlignment="Top" Click="ShowMatrix"/>
 
     </Grid>
 </Window>
