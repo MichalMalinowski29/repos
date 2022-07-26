@@ -23,16 +23,16 @@ namespace projekt
 
         private void GenerateMatrix(object sender, RoutedEventArgs e)
         {
-            int MatrixSide = Int32.Parse(side.Text);
+            int matrixSide = Int32.Parse(side.Text);
 
-            if (MatrixSide <= 10 && MatrixSide > 0)
+            if (matrixSide <= 10 && matrixSide > 0)
             {
                 message = "";
-                data = new int[MatrixSide, MatrixSide];
+                data = new int[matrixSide, matrixSide];
 
-                for (int i = 0; i < MatrixSide; i++)
+                for (int i = 0; i < matrixSide; i++)
                 {
-                    for (int j = 0; j < MatrixSide; j++)
+                    for (int j = 0; j < matrixSide; j++)
                     {
                         data[i, j] = j + i;
                         message += (j + i).ToString() + " ";
@@ -49,34 +49,55 @@ namespace projekt
 
         private void CountRow(object sender, RoutedEventArgs e)
         {
-            int a = 0;
-            int countColumn = Int32.Parse(rowCount.Text);
-            for (int i = 0; i < Int32.Parse(side.Text); i++)
+            try
             {
-                a += MainWindow.data[countColumn, i];
+                int a = 0;
+                int countColumn = Int32.Parse(rowCount.Text);
+                for (int i = 0; i < Int32.Parse(side.Text); i++)
+                {
+                    a += MainWindow.data[countColumn, i];
+                }
+                MessageBox.Show("Suma pól w podanym wierszu wynosi: " + a.ToString());
             }
-            MessageBox.Show("Suma pól w podanym wierszu wynosi: " + a.ToString());
+            catch
+            {
+                MessageBox.Show("Nie podano indeksy wiersza");
+            }
         }
 
         private void CountColumn(object sender, RoutedEventArgs e)
         {
-            int a = 0;
-            int countColumn = Int32.Parse(columnCount.Text);
-            for (int i = 0; i < Int32.Parse(side.Text); i++)
+            try
             {
-                a += MainWindow.data[i, countColumn];
+                int a = 0;
+                int countColumn = Int32.Parse(columnCount.Text);
+                for (int i = 0; i < Int32.Parse(side.Text); i++)
+                {
+                    a += MainWindow.data[i, countColumn];
+                }
+                MessageBox.Show("Suma pól w kolumnie wynosi: " + a.ToString());
             }
-            MessageBox.Show("Suma pól w kolumnie wynosi: " + a.ToString());
+            catch
+            {
+                MessageBox.Show("Nie podano indeksu kolumny");
+            }
         }
 
         private void CountDiagonal(object sender, RoutedEventArgs e)
         {
-            int a = 0;
-            for (int i = 0; i < Int32.Parse(side.Text); i++)
+            try
             {
-                a += MainWindow.data[i, i];
+                int a = 0;
+                for (int i = 0; i < Int32.Parse(side.Text); i++)
+                {
+                    a += MainWindow.data[i, i];
+                }
+                MessageBox.Show("Suma przekątnej: " + a.ToString());
             }
-            MessageBox.Show("Suma przekątnej: " + a.ToString());
+            catch
+            {
+                MessageBox.Show("W programie nie wprowadzono macierzy");
+            }
         }
 
         private void ChooseFileToSave (object sender, RoutedEventArgs e)
@@ -117,21 +138,21 @@ namespace projekt
             var path = pathSF2.Text;
             string FileWithoutNewlines = File.ReadAllText(path, Encoding.UTF8).Replace(Environment.NewLine, " ");
             string[] content = FileWithoutNewlines.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            int MatrixSide = Int32.Parse(side.Text);
-            int IterationCount = 0;
+            int matrixSide = Int32.Parse(side.Text);
+            int iterationCount = 0;
 
-            if (MatrixSide <= 10 && MatrixSide > 0)
+            if (matrixSide <= 10 && matrixSide > 0)
             {
                 message = "";
-                data = new int[MatrixSide, MatrixSide];
+                data = new int[matrixSide, matrixSide];
 
-                for (int i = 0; i < MatrixSide; i++)
+                for (int i = 0; i < matrixSide; i++)
                 {
-                    for (int j = 0; j < MatrixSide; j++)
+                    for (int j = 0; j < matrixSide; j++)
                     {
-                        data[i, j] = Int32.Parse(content[IterationCount]);
-                        message += content[IterationCount] + " ";
-                        IterationCount++;
+                        data[i, j] = Int32.Parse(content[iterationCount]);
+                        message += content[iterationCount] + " ";
+                        iterationCount++;
                     }
                     message += "\n";
                 }
@@ -160,16 +181,16 @@ namespace projekt
 
         private void CreateMatrixFromValues(object sender, RoutedEventArgs e)
         {
-            int MatrixSide = Int32.Parse(side.Text);
+            int matrixSide = Int32.Parse(side.Text);
 
-            if (MatrixSide <= 10 && MatrixSide > 0)
+            if (matrixSide <= 10 && matrixSide > 0)
             {
                 message = "";
-                data = new int[MatrixSide, MatrixSide];
+                data = new int[matrixSide, matrixSide];
 
-                for (int i = 0; i < MatrixSide; i++)
+                for (int i = 0; i < matrixSide; i++)
                 {
-                    for (int j = 0; j < MatrixSide; j++)
+                    for (int j = 0; j < matrixSide; j++)
                     {
                         string InputMessage = $"Podaj kolejną wartość którą chcesz dodać do macierzy. Podana wartość znajdzie się na indeksie: {i}, {j}";
                         string input = Microsoft.VisualBasic.Interaction.InputBox(InputMessage, "Title", "");
@@ -193,9 +214,9 @@ namespace projekt
         }
         
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-            {
-                Regex regex = new Regex("[^0-9]+");
-                e.Handled = regex.IsMatch(e.Text);
-            }
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
+    }
 }
