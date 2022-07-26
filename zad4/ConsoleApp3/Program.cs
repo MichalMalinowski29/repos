@@ -17,15 +17,15 @@ namespace ConsoleApp3
                 Console.WriteLine("Jeżeli chcesz odczytać z konsoli wpisz: 1");
                 Console.WriteLine("Jeżeli chcesz odczytać z pliku wpisz: 2");
 
-                string UserInputMode = Console.ReadLine();
+                string userInputMode = Console.ReadLine();
 
-                if(UserInputMode == "1")
+                if(userInputMode == "1")
                 {
                     Console.WriteLine("Podaj ilość wykonania obliczeń: ");
-                    string NumberOfCalculations = Console.ReadLine(); 
+                    string numberOfCalculations = Console.ReadLine(); 
                     Console.WriteLine("0 znak ciągu to: 0");
                     Console.WriteLine("1 znak ciągu to: 1");
-                    for (int i = 2; i <= Int32.Parse(NumberOfCalculations); i++)
+                    for (int i = 2; i <= Int32.Parse(numberOfCalculations); i++)
                     {
                         Console.WriteLine(i.ToString() + " znak ciągu to: " + (x + y).ToString());
                         z = x;
@@ -34,17 +34,17 @@ namespace ConsoleApp3
 
                     }
                 }
-                else if (UserInputMode == "2")
+                else if (userInputMode == "2")
                 {
                     Console.WriteLine("Dane proszę umieścić w pliku plik.txt znajdującym się w folderze Debug");
                     try
                     {
-                        string TextFromFile = File.ReadAllText(@"C:\Users\buzz\source\repos\zad4\ConsoleApp3\bin\Debug\plik.txt", Encoding.UTF8);
+                        string textFromFile = File.ReadAllText(@"C:\Users\buzz\source\repos\zad4\ConsoleApp3\bin\Debug\plik.txt", Encoding.UTF8);
                         Console.WriteLine("0 znak ciągu to: 0");
                         Console.WriteLine("1 znak ciągu to: 1");
                         try
                         {
-                            for (int i = 2; i <= Int32.Parse(TextFromFile); i++)
+                            for (int i = 2; i <= Int32.Parse(textFromFile); i++)
                             {
                                 Console.WriteLine(i.ToString() + " znak ciągu to: " + (x + y).ToString());
                                 z = x;
