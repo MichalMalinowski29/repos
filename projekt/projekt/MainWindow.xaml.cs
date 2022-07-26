@@ -155,7 +155,6 @@ namespace projekt
             SaveToFileSubmitButton.Visibility = Visibility.Visible;
             rowCount.Visibility = Visibility.Visible;
             columnCount.Visibility = Visibility.Visible;
-            pathSF.Visibility = Visibility.Visible;
             ShowMatrixButton.Visibility = Visibility.Visible;   
         }
 
@@ -192,7 +191,6 @@ namespace projekt
         {
             MessageBox.Show(message);
         }
-
         
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
             {

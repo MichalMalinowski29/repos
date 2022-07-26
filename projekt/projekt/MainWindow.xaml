@@ -7,31 +7,47 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="side" HorizontalAlignment="Left" Margin="18,31,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
-        <TextBlock HorizontalAlignment="Left" Margin="18,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Podaj bok macierz"/><Run Language="pl-pl" Text="y"/></TextBlock>
-        <Button Content="Stwórz macierz o boku powyżej" HorizontalAlignment="Left" Margin="400,197,0,0" VerticalAlignment="Top" Click="GenerateMatrix"/>
 
-        <Button x:Name="CountDiagonalButton" Visibility="Hidden" Content="Oblicz przekątną" HorizontalAlignment="Left" Margin="23,346,0,0" VerticalAlignment="Top" Click="CountDiagonal"/>
-        <Button x:Name="CountRowButton" Visibility="Hidden" Content="Oblicz" HorizontalAlignment="Left" Margin="182,58,0,0" VerticalAlignment="Top" Click="CountRow"/>
-        <Button x:Name="CountColumnButton" Visibility="Hidden" Content="Oblicz" HorizontalAlignment="Left" Margin="444,58,0,0" VerticalAlignment="Top" Click="CountColumn"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
-        <TextBox x:Name="rowCount" Visibility="Hidden"  HorizontalAlignment="Left" Margin="183,31,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="columnCount" Visibility="Hidden" HorizontalAlignment="Left" Margin="444,31,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Podaj bok macierz"/><Run Language="pl-pl" Text="y"/></TextBlock>
+        <TextBox Grid.Column="0" Grid.Row="1" x:Name="side" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
+        <Button Grid.Column="0" Grid.Row="2" Content="Stwórz macierz o boku powyżej" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="GenerateMatrix"/>
 
-        <TextBlock x:Name="RowCountLabel" Visibility="Hidden" HorizontalAlignment="Left" Margin="182,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Language="pl-pl" Text="Wpisz indeks wiersza który chcesz policzyć"/></TextBlock>
-        <TextBlock x:Name="ColumnCountLabel" Visibility="Hidden" HorizontalAlignment="Left" Margin="444,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Wpisz indeks "/><Run Text="kolumny"/><Run Text=" któr"/><Run Text="ą"/><Run Text=" chcesz policzyć"/></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="0" x:Name="ColumnCountLabel" Visibility="Hidden" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Wpisz indeks "/><Run Text="kolumny"/><Run Text=" któr"/><Run Text="ą"/><Run Text=" chcesz policzyć"/></TextBlock>
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="columnCount" Visibility="Hidden" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Grid.Column="1" Grid.Row="2" x:Name="CountColumnButton" Visibility="Hidden" Content="Oblicz" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="CountColumn"/>
 
-        <TextBlock x:Name="SaveToFileLabel" Visibility="Hidden" HorizontalAlignment="Left" Margin="640,289,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Zapisz macież do pliku"/><Run Language="pl-pl"/></TextBlock>
-        <Button x:Name="SaveToFileButton" Visibility="Hidden" Content="Wybierz plik" HorizontalAlignment="Left" Margin="640,351,0,0" VerticalAlignment="Top" Click="ChooseFileToSave"/>
-        <Button x:Name="SaveToFileSubmitButton" Visibility="Hidden" Content="Zapisz" HorizontalAlignment="Left" Margin="728,351,0,0" VerticalAlignment="Top" Click="SaveToFile"/>
-        <TextBox x:Name="pathSF" Visibility="Hidden" HorizontalAlignment="Left" Margin="640,318,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Grid.Column="2" Grid.Row="0" x:Name="RowCountLabel" Visibility="Hidden" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Language="pl-pl" Text="Wpisz indeks wiersza który chcesz policzyć"/></TextBlock>
+        <TextBox Grid.Column="2" Grid.Row="1" x:Name="rowCount" Visibility="Hidden"  HorizontalAlignment="Left" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Grid.Column="2" Grid.Row="2" x:Name="CountRowButton" Visibility="Hidden" Content="Oblicz" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="CountRow"/>
 
-        <TextBox Visibility="Hidden" x:Name="pathSF2" HorizontalAlignment="Left" Margin="18,134,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Wybierz macierz z pliku (Podaj pierwszo bok wyżej)" HorizontalAlignment="Left" Margin="18,274,0,0" VerticalAlignment="Top" Click="ChooseFileToRead"/>
-        <Button Content="Ustaw macierz na podstawie pliku" HorizontalAlignment="Left" Margin="330,274,0,0" VerticalAlignment="Top" Click="SetMatrix"/>
+        <Button Grid.Column="0" Grid.Row="3" Content="Stwórz z wartościach które teraz podaż podaj bok" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="CreateMatrixFromValues"/>
+        <Button Grid.Column="1" Grid.Row="3" Content="Wybierz macierz z pliku, podaj pierwszo bok" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="ChooseFileToRead"/>
+        <Button Grid.Column="2" Grid.Row="3" Content="Ustaw macierz na podstawie pliku" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="SetMatrix"/>
 
-        <Button Content="Stwórz macierz o boku podanym i wartościach które teraz podaż" HorizontalAlignment="Left" Margin="18,197,0,0" VerticalAlignment="Top" Click="CreateMatrixFromValues"/>
-        <Button x:Name="ShowMatrixButton" Content="Wyświetl macierz" Visibility="Hidden" HorizontalAlignment="Left" Margin="605,197,0,0" VerticalAlignment="Top" Click="ShowMatrix"/>
+        <TextBlock Grid.Column="0" Grid.Row="4" x:Name="SaveToFileLabel" Visibility="Hidden" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.142,0.378"><Run Text="Zapisz macież do pliku"/><Run Language="pl-pl"/></TextBlock>
+        <TextBox Grid.Column="1" Grid.Row="4" x:Name="pathSF" Visibility="Hidden" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Grid.Column="2" Grid.Row="4" x:Name="ShowMatrixButton" Content="Wyświetl macierz" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="ShowMatrix"/>
 
+        <Button Grid.Column="0" Grid.Row="5" x:Name="SaveToFileButton" Visibility="Hidden" Content="Wybierz plik" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="ChooseFileToSave"/>
+
+        <Button Grid.Column="0" Grid.Row="6" x:Name="SaveToFileSubmitButton" Visibility="Hidden" Content="Zapisz" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="SaveToFile"/>
+        <TextBox Grid.Column="1" Grid.Row="6" Visibility="Hidden" x:Name="pathSF2" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Grid.Column="2" Grid.Row="6" x:Name="CountDiagonalButton" Visibility="Hidden" Content="Oblicz przekątną" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="CountDiagonal"/>
+        
     </Grid>
 </Window>
